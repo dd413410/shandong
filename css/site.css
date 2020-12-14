@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+.lt {
+  float: left;
+}
+
+.rt {
+  float: right;
+}
+
+dl,
+li {
+  list-style: none;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #08132c;
+}
+
+.tle {
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 28px;
+}
+.subbtn {
+  background-color: #5a98de;
+}
+.title {
+  height: 40px;
+  margin: 5px 0;
+  text-align: center;
+}
+
+
+.layui-tab-title {
+  border-color: #131a5f;
+  border-radius: 0px;
+}
+
+.layui-tab-title li {
+  display: inline-block;
+  padding: 0;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #1b84d2;
+  cursor: pointer;
+  padding: 0 15px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+.layui-tab > .layui-tab-title .layui-this {
+  background-color: #d37540;
+  color: #fff;
+}
+.layui-tab-title .layui-this:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  width: 100%;
+  height: 41px;
+  border-width: 0px;
+  border-style: none;
+  border-bottom-color: #fff;
+  border-radius: 2px 2px 0 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.block {
+  display: inline-block;
+  color: #fff;
+}
+.block button {
+  width: 90px;
+  font-size: 14px;
+}
+.sele {
+  width: 150px;
+  height: 40px;
+  color: #333;
+}
+.lay_sele {
+  color: #000 !important;
+}
+.count {
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+}
+.num {
+  text-align: right;
+}
+.thead,
+.tbody {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  display: -webkit-flex;
+}
+#tbody {
+  height: 460px;
+}
+.thead > div,
+.tbody > div {
+  flex: 1;
+  height: 46px;
+  line-height: 46px;
+  background-color: #0e1e44;
+  font-size: 14px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tbody > div {
+  background-color: rgba(8, 19, 44, 1);
+  border: 1px solid #131a5f;
+}
+
+.def {
+  width: 24px;
+  height: 24px;
+}
+.tbody div img {
+  margin-right: 10px;
+  cursor: pointer;
+}
+#pag {
+  height: 30px;
+  text-align: right;
+  margin: 5px 0;
+  box-sizing: border-box;
+  padding-right: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: none;
+}
+.layui-laypage {
+  margin: 0;
+}
+/* 添加和修改 */
+.lim {
+  width: 100%;
+  height: 680px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  color: #fff;
+  display: none;
+}
+.layForm {
+  font-size: 14px;
+}
+.site-box {
+  height: 480px;
+  background-color: rgba(8, 19, 44, 1);
+  padding: 10px 25px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 100px;
+}
+.site-item {
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+}
+.site-item .layui-form-item {
+  flex: 1;
+}
+.lay_ipt {
+  background-color: #112350;
+  color: #fff;
+  border: none;
+}
+.lay_ipt .layui-input {
+  background-color: #112350;
+  color: #fff;
+  border: none;
+}
+
+
+
+

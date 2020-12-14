@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/radar.css" />
+    <script
+      src="http://api.tianditu.gov.cn/api?v=4.0&tk=f7d44c4104b625f0159d98f50b636bb0"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+    <!-- <div class="main" id="main"></div> -->
+    <div id="map"></div>
+    <div class="myChart" id="dateAxis"></div>
+
+     
+     <div class="hide-box">
+      <div class="hide-tle" id="hide-tle">
+        雷达观测数值
+      </div>
+      <div class="box_tle">
+        <p class="bor">观测类型</p>
+        <p>观测数值</p>
+      </div>
+      <div class="box_box" id="box_box">
+        <!-- <div>
+					<p>1</p>
+					<p>2</p>
+        </div> -->
+      </div>
+    </div>
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script src="../../public/lib/echarts.js"></script>
+  <script src="../../public/lib/china.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        radar: "js/radar",
+      })
+      .use("radar");
+  </script>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>漂移预测</title>
+  <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+  <link rel="stylesheet" href="../../css/common.css" />
+  <link rel="stylesheet" href="../../css/see.css" />
+  <script src="http://api.tianditu.gov.cn/api?v=4.0&tk=f7d44c4104b625f0159d98f50b636bb0"
+    type="text/javascript"></script>
+  <script type="text/javascript"
+    src="http://lbs.tianditu.gov.cn/api/js4.0/opensource/openlibrary/ImageOverlay.js"></script>
+</head>
+
+<body>
+
+  <div class="foot">
+    <div class="myChart" id="dateAxis"></div>
+    <div class="block">
+      <div class="layui-input-inline">
+        <input
+          type="text"
+          class="layui-input"
+          id="time"
+          autocomplete="off"
+          placeholder="选择时间范围"
+        />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="layui-fluid container">
+    <div class="layui-row row">
+      <div class="layui-col-xs9">
+        <div id="map"></div>
+      </div>
+      <div class="layui-col-xs3 rtBox">
+        <!-- <div class="layui-row">
+            <div class="layui-col-xs12 site">
+              浮标数据
+            </div>
+          </div> -->
+
+        <!-- <div class="layui-row">
+            <div class="layui-col-xs3 label">
+              日期选择:
+            </div>
+            <div class="layui-col-xs8">
+              <input
+                type="text"
+                class="layui-input"
+                id="time"
+                autocomplete="off"
+                placeholder="选择时间范围"
+              />
+            </div>
+          </div> -->
+
+        <div class="layui-row">
+          <div class="layui-col-xs12 tle">
+            数据曲线图:
+          </div>
+        </div>
+        <div class="layui-row line" id="line"></div>
+
+        <div class="layui-row">
+          <div class="layui-col-xs12 tle">
+            站点小时数据:
+          </div>
+        </div>
+        <div class="layui-row hData">
+          <div>
+            <dl id="dl"></dl>
+          </div>
+          <div id="ul">
+            <!-- <ul>
+                <li>时间</li>
+                
+              </ul>
+              <ul>
+                <li>时间</li>
+              </ul>
+              <ul>
+                <li>时间</li>
+              </ul> -->
+          </div>
+        </div>
+
+        <div class="layui-row elems" id="elem">
+          <form class="layui-form">
+            <div class="layui-form-item">
+              <div class="layui-input-block" id="radio">
+                <input type="radio" name="reg" checked lay-filter="reg" value="风速" title="风速" />
+                <input type="radio" name="reg" lay-filter="reg" value="水温" title="水温" />
+                <input type="radio" name="reg" lay-filter="reg" value="气温" title="气温" />
+                <input type="radio" name="reg" lay-filter="reg" value="气压" title="气压" />
+                <input type="radio" name="reg" lay-filter="reg" value="盐度" title="盐度" />
+                <input type="radio" name="reg" lay-filter="reg" value="湿度" title="湿度" />
+                <input type="radio" name="reg" lay-filter="reg" value="降水量" title="降水量" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="el">
+    <form class="layui-form">
+      <div class="layui-form-item">
+        <input type="checkbox" value="水温" lay-skin="primary" lay-filter="check" title="水温" name="elemCheck" />
+      </div>
+      <div class="layui-form-item">
+        <input type="checkbox" value="盐度" lay-skin="primary" lay-filter="check" title="盐度" name="elemCheck" />
+      </div>
+
+      <div class="layui-form-item">
+        <input type="checkbox" value="气温" lay-skin="primary" lay-filter="check" title="气温" name="elemCheck" />
+      </div>
+
+      <div class="layui-form-item">
+        <input type="checkbox" value="风速" lay-skin="primary" lay-filter="check" title="风速" name="elemCheck" />
+      </div>
+
+      <div class="layui-form-item">
+        <input type="checkbox" value="湿度" lay-skin="primary" lay-filter="check" title="湿度" name="elemCheck" />
+      </div>
+      <div class="layui-form-item">
+        <input type="checkbox" value="气压" lay-skin="primary" lay-filter="check" title="气压" name="elemCheck" />
+      </div>
+    </form>
+  </div>
+
+  <!-- 此处为捕获页面,点击站点时显示 -->
+  <div class="hide-box">
+    <div class="hide-tle" id="hide-tle">
+      <!-- <span title="浙江省杭州市">浙江省杭州市</span> -->
+      <!-- <p class="layui-icon layui-icon-close laycl" style="cursor: pointer;"></p> -->
+    </div>
+    <div class="box_tle">
+      <p class="ltp bor">观测类型</p>
+      <p class="rtp">观测数值</p>
+    </div>
+    <div class="box_box" id="box_box">
+      <!-- <div>
+					<p>1</p>
+					<p>2</p>
+        </div> -->
+    </div>
+  </div>
+
+
+  <button class="layui-btn layui-btn-sm" id="site" onclick="showFn()">显示站点报警</button>
+  <div class="layui-anim alr" id="alr">
+    <div class="tle-box">
+      站点报警信息
+      <button class="rt layui-btn layui-btn-sm layui-anim-fadeout" onclick="hideFn()">隐藏</button>
+    </div>
+    <div class="alr_box" id="alr_box">
+      <!-- <div class="item">
+          <p class="site">威海小石岛自然保护区监测浮标</p>
+          <p class="time">2020-06-20 16:36</p>
+          <p class="elem">数值预报数据延迟预警阈值</p>
+          <p class="eleval">30</p>
+        </div>
+        <div class="item">
+          <p class="site">威海小石岛自然保护区监测浮标</p>
+          <p class="time">2020-06-20 16:36</p>
+          <p class="elem">数值预报数据延迟预警阈值</p>
+          <p class="eleval">30</p>
+        </div>
+        <div class="item">
+          <p class="site">威海小石岛自然保护区监测浮标</p>
+          <p class="time">2020-06-20 16:36</p>
+          <p class="elem">数值预报数据延迟预警阈值</p>
+          <p class="eleval">30</p>
+        </div> -->
+    </div>
+  </div>
+</body>
+<script src="../../public/lib/layui/layui.js"></script>
+<script src="../../public/lib/echarts.js"></script>
+<script>
+  layui
+    .config({
+      base: "../../public/",
+    })
+    .extend({
+      urls: "lib/urls",
+      see: "js/see",
+    })
+    .use("see");
+</script>
+
+</html>

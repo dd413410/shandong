@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人中心</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/users.css" />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row">
+        <div class="layui-col-xs12">
+          <div class="tle">
+            <p class="lt">
+              用户管理
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close"
+              style="cursor: pointer;"
+              id="close"
+            ></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-row">
+        <form class="layui-form form" id="form">
+          <div class="layui-form-item">
+            <label class="layui-form-label">用户名:</label>
+            <div class="layui-input-block">
+              <input
+                type="text"
+                disabled
+                id="username"
+                name="username"
+                autocomplete="off"
+                class="layui-input lay_ipt"
+              />
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">旧密码:</label>
+            <div class="layui-input-block">
+              <input
+                type="password"
+                name="pass"
+                required
+                lay-verify="pass"
+                autocomplete="off"
+                placeholder="请输入旧密码"
+                class="layui-input lay_ipt"
+              />
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">新密码:</label>
+            <div class="layui-input-block">
+              <input
+                type="password"
+                id="pass1"
+                name="pass1"
+                required
+                lay-verify="pass1"
+                autocomplete="off"
+                placeholder="请输入新密码"
+                class="layui-input lay_ipt"
+              />
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">确认密码:</label>
+            <div class="layui-input-block">
+              <input
+                type="password"
+                name="pass2"
+                required
+                lay-verify="pass2"
+                autocomplete="off"
+                placeholder="请再次输入新密码"
+                class="layui-input lay_ipt"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="layui-btn layui-btn-sm sub"
+            lay-submit
+            lay-filter="form"
+          >
+            提交
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        users: "js/users",
+      })
+      .use("users");
+  </script>
+</html>

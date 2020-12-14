@@ -1,0 +1,264 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+.lt {
+  float: left;
+}
+
+.rt {
+  float: right;
+}
+
+dl,
+li {
+  list-style: none;
+}
+body {
+  background: url("../static/bg1.png") no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+
+#login {
+  width: 100vw;
+  height: 100vh;
+  background-color: #eee;
+  position: relative;
+  background: url("../static/bg2.png") no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+
+.imgBox {
+  float: left;
+}
+
+#login .lt {
+  width: 50%;
+}
+
+#login .rt {
+  width: 50%;
+}
+
+.earth {
+  width: 665px;
+  height: 665px;
+}
+
+.earth img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-left: 245px;
+  /* margin-left: 170px; */
+  margin-top: 40px;
+}
+
+.tle {
+  font-size: 45px;
+  color: #b0e1e5;
+  background-image: -webkit-linear-gradient(left, #3581e3, #499bf0, #66c0f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 50px;
+}
+.form {
+  width: 530px;
+  height: 523px;
+  margin: auto;
+  border: 1px solid rgba(0, 0, 0, 0);
+  position: relative;
+}
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 530px;
+  height: 523px;
+  background: url("../static/ionc1.png") no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.loginform {
+  width: 455px;
+  height: 450px;
+  margin: 0 auto;
+  background-color: #333c48;
+  margin-top: 25px;
+  border-radius: 30px;
+}
+.loginTle {
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+  height: 100px;
+  line-height: 100px;
+  margin-bottom: 0;
+}
+.loginItem {
+  width: 400px;
+  height: 60px;
+  background-color: #49515c;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.loginType {
+  color: #fff;
+  font-size: 24px;
+
+  /* margin-bottom: 51px; */
+}
+.label {
+  width: 21px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  margin-left: 25px;
+  margin-top: 17px;
+  margin-right: 25px;
+}
+.layui-form-item .rtIpt {
+  width: 300px;
+  height: 50px;
+  margin-top: 5px;
+}
+.layui-form-item .rtIpt input {
+  width: 100%;
+  height: 100%;
+  background-color: #49515c;
+  font-size: 20px;
+  border: none;
+  color: #fff;
+}
+.btnBox {
+  width: 400px;
+  height: 60px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.sub_btn {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  background-color: #5a98de;
+  background: linear-gradient(to right, #6fcbf7, #3485ee);
+}
+.desc {
+  text-align: center;
+  color: #c3c3c3;
+  font-size: 14px;
+}
+input::-webkit-input-placeholder {
+  color: white;
+}
+input:-moz-placeholder {
+  color: white;
+}
+input::-moz-placeholder {
+  color: white;
+}
+input:-ms-input-placeholder {
+  color: white;
+}
+.layui-layer-setwin {
+  display: none !important;
+}
+@media screen and (min-height: 950px) {
+  .earth img {
+    margin-top: 120px;
+  }
+  .tle {
+    margin-top: 190px;
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  .earth img {
+    margin-left: 170px;
+  }
+}
+
+
+
+
+/* //////////////////////////////// */
+.body {
+  width: 100%;
+  height: 100vh;
+  background: url("../static/login.jpg") no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  min-width: 1680px;
+  position: relative;
+}
+.l_box{
+  width: 680px;
+  height: 370px;
+  border: 10px solid rgba(0,0,0,0.6);
+  border-radius: 5px;
+  position: absolute;
+  right: 200px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.l_tle{
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  font-size: 40px;
+  color: #b0e1e5;
+  background-color: rgba(0,0,0,0.4);
+}
+.l_gin{
+  width: 100%;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.lt_gin{
+  width: 420px;
+  height: 100%;
+  /* background-color: #73b9a2; */
+}
+.rt_check{
+  width: 260px;
+  height: 100%;
+}
+.check{
+  width: 100%;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+  background-color: #46485f;
+  color: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 24px;
+}
+.add{
+  background-color: #b7ba6b;
+  /* border: 1px solid #b7ba6b; */
+}
+.l_form{
+  margin-top: 35px;
+}
+.subbtn{
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  background-color: #508a88;
+}
+ /* #4facfa; */

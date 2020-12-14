@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+.lt {
+  float: left;
+}
+
+.rt {
+  float: right;
+}
+
+dl,
+li {
+  list-style: none;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.tdt-control {
+  display: none;
+}
+.tdt-pane {
+  z-index: 0 !important;
+}
+.subbtn {
+  background-color: #5a98de;
+}
+
+/* 时间轴 */
+.axis {
+  position: absolute;
+  left: 200px;
+  right: 0;
+  top: 80px;
+  width: 1100px;
+  height: 60px;
+  z-index: 2;
+  display: none;
+}
+.myChart {
+  width: 1000px;
+  height: 60px;
+}
+.axis .rt {
+  width: 100px;
+  height: 60px;
+  line-height: 50px;
+  text-indent: 10px;
+}
+.axis .rt i {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+#play {
+  display: none;
+}
+
+/* 地图 */
+.main {
+  width: 100vw;
+  height: 100vh;
+}
+.switch {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 360px;
+  height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  border: 2px solid #131a5f;
+  background-color: #08132c;
+  color: #fff;
+  z-index: 1;
+}
+.preList {
+  height: 100%;
+  overflow-y: auto;
+}
+.list_tle {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  border-top: 2px solid #131a5f;
+  border-bottom: 2px solid #131a5f;
+  text-align: center;
+  font-size: 24px;
+}
+.list_tle #icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 30px;
+  cursor: pointer;
+}
+.preList > div {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #131a5f;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+}
+.addImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.preList > div p {
+  flex: 1;
+  /* width: 50%;
+    float: left; */
+}
+.preList > div:hover {
+  background-color: rgba(211, 117, 64, 0.3);
+}
+.add {
+  background-color: rgba(211, 117, 64, 0.7);
+}
+#icons {
+  position: fixed;
+  right: 10px;
+  top: 90px;
+  z-index: 1;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.tips {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3px;
+  margin: auto;
+  width: 800px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.tdt-label {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: none !important;
+  box-shadow: 0px 0px 0px #000 !important;
+  -webkit-box-shadow: none 0px 0px 0px #000 !important;
+}
+.ks {
+  font-size: 20px;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 10px;
+  border-radius: 3px;
+  color: #33cc00;
+}
+.tm {
+  padding: 0 10px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
+}

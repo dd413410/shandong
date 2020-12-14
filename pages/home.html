@@ -1,0 +1,88 @@
+<script>
+  var user = sessionStorage.user;
+  if (!user) {
+    window.location.href = "../index.html";
+  }
+</script>
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <title>海洋环境综合信息动态监控平台</title>
+  </head>
+
+  <body>
+    <div class="head">
+      <div class="title">
+        海洋环境综合信息动态监控平台
+      </div>
+      <div class="site">
+        <span id="date"></span>
+        <span class="layui-icon layui-icon-refresh-3" onclick="load()"></span>
+      </div>
+      <div class="sign">
+        <div class="lt user" id="user">未知</div>
+        <img
+          src="../static/users.png"
+          title="个人中心"
+          alt="个人中心"
+          class="lt"
+          id="openHtm"
+        />
+        <div
+          class="layui-btn layui-btn-normal layui-btn-xs lt out"
+          onclick="outFn()"
+        >
+          退出
+        </div>
+      </div>
+    </div>
+    
+    <div class="btnUrl" onclick="clickFn()">
+      <p class="layui-icon layui-icon-release"></p>
+      <div>
+        处理显示平台
+      </div>
+    </div>
+
+    <div class="item_btn" id="item_btn">
+      <p class="add" type="1" src="./data/see.html">浮标监测</p>
+      <p type="1" src="./data/radar.html">雷达监测</p>
+      <p type="1" src="./data/duty.html">视频监控</p>
+      <p type="1" src="./data/monit.html">遥感监测</p>
+      <p type="1" src="./data/numpre.html">数值预报</p>
+
+      <p type="2" src="./data/accept.html"  style="margin-top: 30px;">数据接收</p>
+      <p type="2" src="./data/alert.html">报警信息</p>
+      <p type="2" src="./data/call.html">报警设置</p>
+      <p type="2" src="./data/site.html">站点管理</p>
+      <p type="2" src="./data/info.html">人员管理</p>
+      <p type="2" src="./data/user.html">用户管理</p>
+    </div>
+
+    <iframe
+      class="iframe"
+      src="./data/see.html"
+      scrolling="no"
+      frameborder="0"
+      id="box"
+      name="box"
+    ></iframe>
+  </body>
+  <script src="../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        home: "js/home",
+      })
+      .use("home");
+  </script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>海洋环境综合分析处理显示系统</title>
+    <link rel="stylesheet" href="./public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body class="body">
+    <div class="l_box">
+      <div class="l_tle">海洋环境综合分析处理显示系统</div>
+      <div class="l_gin">
+        <div class="lt lt_gin">
+          <form class="layui-form l_form">
+            <div class="layui-form-item loginItem">
+              <label class="layui-form-label label">
+                <img src="static/user.png" />
+              </label>
+              <div class="layui-input-inline rtIpt">
+                <input
+                  type="text"
+                  name="user"
+                  id="user"
+                  required
+                  lay-verify="user"
+                  placeholder="请输入账号"
+                  autocomplete="off"
+                  class="layui-input"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item loginItem">
+                <label class="layui-form-label label">
+                  <img src="static/pass.png" />
+                </label>
+                <div class="layui-input-inline rtIpt">
+                  <input
+                    type="password"
+                    name="pass"
+                    id="pass"
+                    required
+                    lay-verify="pass"
+                    placeholder="请输入密码"
+                    autocomplete="off"
+                    class="layui-input"
+                  />
+                </div>
+              </div>
+
+              <div class="layui-form-item">
+                <div class="layui-input-block btnBox">
+                  <button
+                    type="submit"
+                    class="layui-btn subbtn"
+                    lay-submit
+                    lay-filter="login"
+                  >
+                    登录
+                  </button>
+                </div>
+              </div>
+
+
+
+          </form>
+        </div>
+        <div class="lt rt_check">
+          <div class="check add" cate="1">
+            动态监控平台
+          </div>
+          <div class="check" cate="2">
+            处理显示平台
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </body>
+  <script src="./public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "./public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        index: "js/index",
+      })
+      .use("index");
+  </script>
+</html>

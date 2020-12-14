@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://js.arcgis.com/3.32/dijit/themes/claro/claro.css"/> -->
+    <!-- <link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css"/> -->
+    <link rel="stylesheet" href="../../public/lib/arcgis_js_api/library/3.14/3.14/esri/css/esri.css">
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/numpre.css" />
+    <!-- <script
+      src="http://api.tianditu.gov.cn/api?v=4.0&tk=f7d44c4104b625f0159d98f50b636bb0"
+      type="text/javascript"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../../public/lib//ImageOverlay.js"
+    ></script> -->
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <div class="foot">
+      <div class="layui-inline block">
+        <div class="layui-input-inline">
+          <input
+            type="text"
+            class="layui-input"
+            id="date"
+            autocomplete="off"
+            placeholder="选择时间范围"
+          />
+        </div>
+      </div>
+      <div class="myChart" id="dateAxis"></div>
+    </div>
+
+    <div class="elem">
+      <form class="layui-form">
+        <div class="layui-form-item">
+          <input
+            type="checkbox"
+            value="1"
+            checked
+            lay-skin="primary"
+            lay-filter="check"
+            title="风场"
+          />
+        </div>
+
+        <div class="layui-form-item">
+          <input
+            type="checkbox"
+            value="2"
+            lay-skin="primary"
+            lay-filter="check"
+            title="流场"
+          />
+        </div>
+      </form>
+    </div>
+  </body>
+  <!-- <script src="../../public/lib/layui/layui.js"></script> -->
+  <script src="../../public/lib/layui/layui.all.js"></script>
+  <script src="../../public/lib/echarts.js"></script>
+  <script src="../../public/lib/arcgis_js_api/library/3.14/3.14/init.js"></script>
+
+
+  <!-- <script src="../../public/lib/js/init.js"></script>
+  <script src="../../public/lib/js/jsapi_zh-cn.js"></script>   -->
+  <script src="../../public/lib/urls.js"></script>
+  <script src="../../public/lib/jquery.js"></script>
+  <script src="../../public/js/numpre.js"></script>
+  <!-- <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        numpre: "js/numpre",
+      })
+      .use("numpre");
+  </script> -->
+</html>

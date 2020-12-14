@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>站点信息</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row">
+        <div class="layui-col-xs12">
+          <div class="tle">
+            <p class="lt">
+              站点信息
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close"
+              style="cursor: pointer;"
+              id="close"
+            ></p>
+          </div>
+        </div>
+      </div>
+      <div class="layui-row title layui-tab" lay-filter="tab">
+        <ul class="layui-tab-title">
+          <li class="layui-this" tab-id="浮标">浮标</li>
+          <li tab-id="雷达">雷达</li>
+          <li tab-id="视频">视频</li>
+        </ul>
+      </div>
+      <div class="layui-row count">
+        <div class="layui-col-xs4">
+          <button class="layui-btn subbtn" onclick="operFn('1')">
+            添加站点
+          </button>
+        </div>
+        <div class="layui-col-xs4 layui-col-md-offset4 num">
+          共有数据<span id="count">0</span>条
+        </div>
+      </div>
+      <div class="layui-row thead">
+        <div>站点名</div>
+        <div>站类别</div>
+        <div>站代码</div>
+        <div>地点</div>
+        <div>经度</div>
+        <div>纬度</div>
+        <div>布放时间</div>
+        <div>操作</div>
+      </div>
+      <div class="layui-row" id="tbody"></div>
+      <div id="pag"></div>
+    </div>
+    <!--添加-->
+    <div class="layui-fluid lim" id="add">
+      <div class="layui-row">
+        <div class="layui-col-xs8 layui-col-xs-offset2 site-box">
+          <div class="tle">
+            <p class="lt" id="tle">
+              添加站点
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close"
+              style="cursor: pointer;"
+              onclick="closeFn()"
+            ></p>
+          </div>
+          <form class="layui-form layForm" lay-filter="addForm" id="addForm">
+            <input type="hidden" name="id" />
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">所属类别:</label>
+              <div class="layui-input-block lay_ipt lay_sele">
+                <select name="ofType" id="dibl">
+                  <option value="雷达">雷达</option>
+                  <option value="浮标">浮标</option>
+                  <option value="视频">视频</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">站点名:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="station"
+                  required
+                  lay-verify="station"
+                  autocomplete="off"
+                  placeholder="请输入站点名"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">站代码:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="stationCode"
+                  required
+                  lay-verify="stationCode"
+                  autocomplete="off"
+                  placeholder="请输入站代码"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">地点:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="address"
+                  required
+                  lay-verify="address"
+                  autocomplete="off"
+                  placeholder="请输入地点"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">经度:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="lon"
+                  required
+                  lay-verify="lon"
+                  autocomplete="off"
+                  placeholder="请输入经度"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">纬度:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="lat"
+                  required
+                  lay-verify="lat"
+                  autocomplete="off"
+                  placeholder="请输入纬度"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">布放时间:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="Date"
+                  required
+                  lay-verify="Date"
+                  autocomplete="off"
+                  placeholder="请选择布放时间"
+                  class="layui-input lay_ipt"
+                  id="Date"
+                />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button
+                  type="submit"
+                  class="layui-btn subbtn"
+                  lay-submit
+                  lay-filter="addBtn"
+                >
+                  提交
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        site: "js/site",
+      })
+      .use("site");
+  </script>
+</html>

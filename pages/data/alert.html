@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>报警参数设置</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/alert.css" />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row">
+        <div class="layui-col-xs12">
+          <div class="tle">
+            <p class="lt">
+              报警信息
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close"
+              style="cursor: pointer;"
+              id="close"
+            ></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-row title">
+
+        <div class="block">
+          <form class="layui-form lt">
+            <div class="layui-input-block lay_ipt sele">
+              <select id="site">
+                <!-- <option value="雷达">雷达</option>
+                <option value="浮标">浮标</option>
+                <option value="视频">视频</option> -->
+              </select>
+            </div>
+          </form>
+          <div class="lt">
+            <button class="layui-btn subbtn" id="sear">
+              <i class="layui-icon layui-icon-search"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="layui-row count">
+        <div class="rt">共有数据<span id="count">0</span>条</div>
+      </div>
+
+      <div class="layui-row thead">
+        <div class="layui-col-xs3">站名</div>
+        <div class="layui-col-xs3">时间</div>
+        <div class="layui-col-xs3">要素</div>
+        <div class="layui-col-xs3">报警值</div>
+      </div>
+      <div class="layui-row tbody" id="tbody"></div>
+      <div id="pag"></div>
+    </div>
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        alert: "js/alert",
+      })
+      .use("alert");
+  </script>
+</html>

@@ -1,0 +1,80 @@
+<script>
+  var user = sessionStorage.user;
+  if (!user) {
+    window.location.href = "../index.html";
+  }
+</script>
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <title>海洋溢油应急分析处理显示平台</title>
+  </head>
+
+  <body>
+    <div class="head">
+      <div class="title">
+        海洋溢油应急分析处理显示平台
+      </div>
+      <div class="site">
+        <span id="date"></span>
+        <span class="layui-icon layui-icon-refresh-3" onclick="load()"></span>
+      </div>
+      <div class="sign">
+        <div class="lt user" id="user">admin</div>
+        <img
+          src="../static/users.png"
+          title="个人中心"
+          alt="个人中心"
+          class="lt"
+          id="openHtm"
+        />
+        <div
+          class="layui-btn layui-btn-normal layui-btn-xs lt out"
+          onclick="outFn()"
+        >
+          退出
+        </div>
+      </div>
+    </div>
+
+    <div class="btnUrl" onclick="clickFn()">
+      <p class="layui-icon layui-icon-release"></p>
+      <div>动态监控平台</div>
+    </div>
+
+    <div class="item_btn" id="item_btn">
+      <p type="1" src="./data/warn.html" id="yiyou">溢油预警</p>
+      <p type="1" src="../pages/data/pre.html" id="yuce">漂移预测</p>
+      <p type="1" src="./data/case.html">预测案例</p>
+      <p type="1" src="./data/analy.html">融合分析</p>
+      <p type="1" src="./data/fuse.html">融合案例</p>
+    </div>
+
+    <iframe
+      class="iframe"
+      src=""
+      scrolling="no"
+      frameborder="0"
+      id="box"
+      name="box"
+    ></iframe>
+  </body>
+
+  <script src="../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        homes: "js/homes",
+      })
+      .use("homes");
+  </script>
+</html>

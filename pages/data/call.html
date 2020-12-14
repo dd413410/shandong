@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>报警参数设置</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/call.css" />
+  </head>
+
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row">
+        <div class="layui-col-xs12">
+          <div class="tle">
+            <p class="lt">
+              报警参数设置
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close"
+              style="cursor: pointer;"
+              id="close"
+            ></p>
+          </div>
+        </div>
+      </div>
+      <div class="layui-row title layui-tab" lay-filter="tab">
+          <ul class="layui-tab-title">
+            <li class="layui-this" tab-id="1">观测要素值报警</li>
+            <li tab-id="2">数据到报延迟报警</li>
+          </ul>
+      </div>
+
+      <div class="layui-row count">
+        <div class="rt">共有数据<span id="count">0</span>条</div>
+      </div>
+      <div class="layui-row thead" id="thead">
+        <!-- <div class="layui-col-xs3">要素名</div>
+        <div class="layui-col-xs3">上阈值告警</div>
+        <div class="layui-col-xs3">下阈值告警</div>
+        <div class="layui-col-xs3">操作</div> -->
+      </div>
+      <div class="layui-row" id="tbody"></div>
+    </div>
+
+    <div class="layui-fluid mask">
+      <div class="layui-row">
+        <div class="layui-col-xs6 mask_call">
+          <div class="subTle">
+            <p class="lt">
+              编辑要素配置
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close"
+              style="cursor: pointer;"
+              id="maskHide"
+            ></p>
+          </div>
+
+          <div class="userInfo">
+            <form class="layui-form call_form" lay-filter="form">
+              <div class="layui-form-item item">
+                <label class="layui-form-label">要素名:</label>
+                <div class="layui-input-block">
+                  <input
+                    type="text"
+                    name="elem"
+                    
+                    disabled
+                    class="layui-input lay_ipt"
+                  />
+                </div>
+              </div>
+
+              <div class="layui-form-item item">
+                <label class="layui-form-label">上阀值:</label>
+                <div class="layui-input-block">
+                  <input
+                    type="text"
+                    name="topVal"
+                    autocomplete="off"
+                    lay-verify="topVal"
+                    placeholder="请输入上阀值"
+                    class="layui-input lay_ipt"
+                  />
+                </div>
+              </div>
+
+              <div class="layui-form-item item">
+                <label class="layui-form-label">下阀值:</label>
+                <div class="layui-input-block">
+                  <input
+                    type="text"
+                    name="btmVal"
+                    autocomplete="off"
+                    lay-verify="btmVal"
+                    placeholder="请输入下阀值"
+                    class="layui-input lay_ipt"
+                  />
+                </div>
+              </div>
+              <div class="layui-form-item item">
+                <label class="layui-form-label"></label>
+                <button
+                  type="submit"
+                  class="layui-btn subbtn"
+                  lay-submit
+                  lay-filter="sub"
+                >
+                  提交
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-fluid masks">
+      <div class="layui-row">
+        <div class="layui-col-xs6 mask_call">
+          <div class="subTle">
+            <p class="lt">
+              编辑要素配置
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close"
+              style="cursor: pointer;"
+              id="maskHides"
+            ></p>
+          </div>
+
+          <div class="userInfo">
+            <form class="layui-form call_form" lay-filter="forms">
+              <div class="layui-form-item item">
+                <label class="layui-form-label">要素名:</label>
+                <div class="layui-input-block">
+                  <input
+                    type="text"
+                    name="type"
+                    disabled
+                    class="layui-input lay_ipt"
+                  />
+                </div>
+              </div>
+
+              <div class="layui-form-item item">
+                <label class="layui-form-label">延迟时间:</label>
+                <div class="layui-input-block">
+                  <input
+                    type="text"
+                    name="time"
+                    id="place"
+                    autocomplete="off"
+                    lay-verify="time"
+                    placeholder="请输入延迟时间(最低0.5H)"
+                    class="layui-input lay_ipt"
+                  />
+                </div>
+              </div>
+
+              <div class="layui-form-item item">
+                <label class="layui-form-label"></label>
+                <button
+                  type="submit"
+                  class="layui-btn subbtn"
+                  lay-submit
+                  lay-filter="subs"
+                >
+                  提交
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        call: "js/call",
+      })
+      .use("call");
+  </script>
+</html>

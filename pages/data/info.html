@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>人员信息</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/info.css" />
+  </head>
+
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row">
+        <div class="layui-col-xs12">
+          <div class="tle">
+            <p class="lt">
+              人员信息
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close"
+              style="cursor: pointer;"
+              id="close"
+            ></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-row title">
+        <div class="block">
+          <div class="layui-input-block lt">
+            <input
+              type="text"
+              placeholder="请输入内容"
+              autocomplete="off"
+              class="layui-input look"
+              id="look"
+            />
+          </div>
+          <div class="lt">
+            <button class="layui-btn subbtn" id="sear">
+              <i class="layui-icon layui-icon-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="layui-row count">
+        <div class="layui-col-xs4">
+          <button class="layui-btn subbtn" onclick="operFn('1')">
+            添加人员
+          </button>
+        </div>
+        <div class="layui-col-xs4 layui-col-md-offset4 num">
+          共有数据<span id="count">0</span>条
+        </div>
+      </div>
+
+      <div class="layui-row thead">
+        <div class="layui-col-xs1">姓名</div>
+        <div class="layui-col-xs1">性别</div>
+        <div class="layui-col-xs1">电话</div>
+        <div class="layui-col-xs1">籍贯</div>
+        <div class="layui-col-xs1">出生日期</div>
+        <div class="layui-col-xs1">调入时间</div>
+        <div class="layui-col-xs1">调出时间</div>
+        <!-- <div class="layui-col-xs1">所属站点</div> -->
+        <div class="layui-col-xs1">状态</div>
+        <div class="layui-col-xs2">描述</div>
+        <div class="layui-col-xs2">操作</div>
+      </div>
+      <div class="layui-row" id="tbody"></div>
+      <div id="pag"></div>
+    </div>
+
+    <!--////////分配-->
+    <div class="layui-fluid infoAdd mask" id="masks">
+      <div class="layui-row">
+        <div class="layui-col-xs8 mask_info">
+          <div class="tle">
+            <p class="lt">
+              配置管理站点
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close maskHide"
+              style="cursor: pointer;"
+            ></p>
+          </div>
+          <form class="layui-form" lay-filter="matcForm" id="matcForm">
+            <div class="layui-form-item">
+              <label class="layui-form-label">操作:</label>
+              <div class="layui-input-block">
+                <input
+                  type="checkbox"
+                  lay-filter="cheAll"
+                  id="cheAll"
+                  lay-skin="primary"
+                  title="全选 "
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">站点:</label>
+              <div class="layui-input-block" id="check"></div>
+            </div>
+            <div class="layui-form-item" pane="">
+              <label class="layui-form-label">延时(分钟):</label>
+              <div class="layui-input-block">
+                <input
+                  type="number"
+                  name="delay"
+                  value="0"
+                  autocomplete="off"
+                  placeholder="请输入延时分钟"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button
+                  type="submit"
+                  class="layui-btn subbtn"
+                  lay-submit
+                  lay-filter="matcsub"
+                >
+                  提交
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--////////添加和修改-->
+    <div class="layui-fluid infoAdd mask" id="mask">
+      <div class="layui-row">
+        <div class="layui-col-xs8 mask_info">
+          <div class="tle">
+            <p class="lt">
+              人员信息
+            </p>
+            <p
+              class="rt layui-icon layui-icon-close maskHide"
+              style="cursor: pointer;"
+            ></p>
+          </div>
+          <form class="layui-form layForm" lay-filter="infoForm" id="infoForm">
+            <div class="layui-form-item">
+              <input type="hidden" name="id" />
+              <label class="layui-form-label">姓名:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  lay-verify="name"
+                  autocomplete="off"
+                  placeholder="请输入姓名"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">出生日期:</label>
+              <div class="layui-input-inline">
+                <input
+                  type="text"
+                  name="b_date"
+                  required
+                  lay-verify="b_date"
+                  id="b_date"
+                  autocomplete="off"
+                  placeholder="请选择时间"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="site-item">
+              <div class="layui-form-item">
+                <label class="layui-form-label">调入时间:</label>
+                <div class="layui-input-inline">
+                  <input
+                    type="text"
+                    name="enter_date"
+                    required
+                    lay-verify="enter_date"
+                    id="enter_date"
+                    autocomplete="off"
+                    placeholder="请选择时间"
+                    class="layui-input lay_ipt"
+                  />
+                </div>
+              </div>
+              <div class="layui-form-item is">
+                <label class="layui-form-label">调出日期:</label>
+                <div class="layui-input-inline">
+                  <input
+                    type="text"
+                    name="out_date"
+                    required
+                    lay-verify="out_date"
+                    id="out_date"
+                    autocomplete="off"
+                    placeholder="请选择时间"
+                    class="layui-input lay_ipt"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <div class="lt">
+                <label class="layui-form-label">性别:</label>
+                <div class="layui-input-block">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="男"
+                    title="男"
+                    checked=""
+                  />
+                  <input type="radio" name="gender" value="女" title="女" />
+                </div>
+              </div>
+              <div class="lt is">
+                <label class="layui-form-label">状态:</label>
+                <div class="layui-input-block">
+                  <input
+                    type="radio"
+                    name="type"
+                    value="正常"
+                    title="正常"
+                    checked=""
+                  />
+                  <input type="radio" name="type" value="停用" title="停用" />
+                </div>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">电话:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="mobile"
+                  required
+                  lay-verify="mobile"
+                  placeholder="请输入联系方式"
+                  autocomplete="off"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">籍贯:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="address"
+                  required
+                  lay-verify="address"
+                  autocomplete="off"
+                  placeholder="请输入籍贯"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <!-- <div class="layui-form-item">
+              <label class="layui-form-label">所属站点:</label>
+              <div class="layui-input-block lay_ipt lay_sele">
+                <select name="of_site" lay-filter="drop" id="seleBox"> </select>
+              </div>
+            </div> -->
+
+            <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">备注:</label>
+              <div class="layui-input-block">
+                <textarea
+                  placeholder="请输入内容"
+                  class="layui-textarea lay_ipt"
+                  name="description"
+                  style="resize: none;"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button
+                  type="submit"
+                  class="layui-btn subbtn"
+                  lay-submit
+                  lay-filter="sub"
+                >
+                  提交
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        info: "js/info",
+      })
+      .use("info");
+  </script>
+</html>

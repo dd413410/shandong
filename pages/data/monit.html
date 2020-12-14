@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+  <link rel="stylesheet" href="../../css/monit.css" />
+  <script src="http://api.tianditu.gov.cn/api?v=4.0&tk=f7d44c4104b625f0159d98f50b636bb0"
+    type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="switch" id="switch">
+    <div class="list_tle">
+      遥感列表
+      <i class="layui-icon" id="icon">&#xe66b;</i>
+    </div>
+    <div class="preList" id="preList">
+
+
+      <!-- <div>
+        <p class="name">案例一</p>
+        <p class="time">2017-08-08 17:30:20</p>
+        <p class="href"><a href=' + dataItem.doc + ' target="_blank">下载快报</a></p>
+        <p class="btn">
+          <button class="layui-btn layui-btn-sm toRou">删除</button>
+          <button class="layui-btn layui-btn-sm toRou">预测</button>
+        </p>
+      </div>
+
+      <div>
+        <p class="name">案例一</p>
+        <p class="time">2017-08-08 17:30:20</p>
+        <p class="href"><a href=' + dataItem.doc + ' target="_blank">下载快报</a></p>
+        <p class="btn">
+          <button class="layui-btn layui-btn-sm toRou">预测</button>
+        </p>
+      </div> -->
+
+
+
+
+
+    </div>
+    <div class="rota" id="rotas">
+      <div class="layui-carousel" id="rota">
+        <!-- <div carousel-item="">
+            <div><img src="../../temp/1.jpg"/></div>
+            <div><img src="../../temp/2.jpg"/></div>
+            <div><img src="../../temp/3.jpg"/></div>
+          </div> -->
+      </div>
+    </div>
+  </div>
+  <i class="layui-icon" id="icons">&#xe668;</i>
+
+  <div class="main" id="map"></div>
+
+  <div class="tips">
+    有新数据,是否更新? <button class="layui-btn layui-btn-sm subbtn" onclick="listFn()">更新</button>
+  </div>
+
+  <div class="film">
+    <form class="layui-form form" lay-filter="film">
+      <div class="layui-form-item tle">
+        油膜颜色设置
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">油膜颜色:</label>
+        <div class="layui-input-block">
+          <select name="color" lay-filter="color">
+            <option value="0">默认色</option>
+            <option value="1">银白色</option>
+            <option value="2">灰色</option>
+            <option value="3">彩虹色</option>
+            <option value="4">蓝色</option>
+            <option value="5">蓝褐色</option>
+            <option value="6">褐色</option>
+            <option value="7">黑色</option>
+            <option value="8">黑褐色</option>
+            <option value="9">桔色(巧克力色)</option>
+          </select>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">油膜厚度:</label>
+        <div class="layui-input-block">
+          <select name="thick" lay-filter="thick">
+            <option value="0">待确定</option>
+            <option value="1">0.02-0.05(um)</option>
+            <option value="2">0.1(um)</option>
+            <option value="3">0.3(um)</option>
+            <option value="4">1.0(um)</option>
+            <option value="5">5(um)</option>
+            <option value="6">15(um)</option>
+            <option value="7">20(um)</option>
+            <option value="8">100(um)</option>
+            <option value="9">1000-4000(um)</option>
+          </select>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button type="submit" class="layui-btn subbtn" lay-submit lay-filter="subBtn">
+            设置
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+</body>
+<script src="../../public/lib/layui/layui.js"></script>
+<script src="../../public/lib/echarts.js"></script>
+<script src="../../public/lib/china.js"></script>
+<script>
+  layui
+    .config({
+      base: "../../public/",
+    })
+    .extend({
+      urls: "lib/urls",
+      monit: "js/monit",
+    })
+    .use("monit");
+</script>
+
+</html>

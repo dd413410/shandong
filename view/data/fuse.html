@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/fuse.css" />
+    <script
+      src="http://api.tianditu.gov.cn/api?v=4.0&tk=f7d44c4104b625f0159d98f50b636bb0"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div class="main" id="map"></div>
+
+    <div class="switch" id="switch">
+      <div class="list_tle">
+        案例列表
+        <i class="layui-icon" id="icon">&#xe66b;</i>
+      </div>
+      <div class="preList" id="preList">
+        <!-- <input type="file" accept=""> -->
+        <!-- <div class="addImg"><img src="../../static/add.png" alt="" /></div> -->
+        <!-- <div class="add">
+        <p>1111</p>
+        <p>2010</p>
+      </div> -->
+      </div>
+      <button class="layui-btn layui-btn-sm" id="show">显示融合数据</button>
+    </div>
+    <i class="layui-icon" id="icons">&#xe668;</i>
+
+    <div class="tips">
+      <div class="item">
+        <p class="lp lpa"></p>
+        <p class="rp">
+          SAR绘制面颜色
+        </p>
+      </div>
+
+      <div class="item">
+        <p class="lp lpb"></p>
+        <p class="rp">
+          X波段绘制面颜色
+        </p>
+      </div>
+
+      <div class="item">
+        <p class="lp lpc"></p>
+        <p class="rp">
+          光学绘制面颜色
+        </p>
+      </div>
+
+      <div class="item">
+        <p class="lp lpd"></p>
+        <p class="rp">
+          高光谱绘制面颜色
+        </p>
+      </div>
+    </div>
+
+    <div class="alr_box">
+      <p class="layui-icon layui-icon-close rt" id="hide"></p>
+      <div id="text"> 
+        <!-- 卫星光学和高光谱和sar:0.33平方公里 -->
+      </div>
+    </div>
+
+
+    
+    <!-- <button class="layui-btn layui-btn-sm" id="show">显示</button> -->
+
+
+
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        fuses: "js/fuses",
+      })
+      .use("fuses");
+  </script>
+</html>

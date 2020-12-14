@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/warn.css" />
+    <script
+      src="http://api.tianditu.gov.cn/api?v=4.0&tk=f7d44c4104b625f0159d98f50b636bb0"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+
+    <div class="axis" id="axis">
+      <div class="rt">
+        <i class="layui-icon layui-icon-pause" id="pause" onclick="pauseFn()"></i>
+        <i class="layui-icon layui-icon-play" id="play" onclick="playFn()"></i>
+      </div>
+      <div class="myChart" id="dateAxis"></div>
+    </div>
+    
+    <!-- <div class="myChart" id="dateAxis"></div> -->
+
+
+
+    <div class="main" id="map"></div>
+
+    <div id="tips">
+      当前无溢油!
+    </div>
+
+    <div class="mask" id="mask">
+      <div class="layui-fluid alrBox" id="alrBox">
+        <div class="layui-row tle-box">
+          <p class="tle">
+            溢油参数输入
+          </p>
+          <!-- <p
+            class="rt layui-icon layui-icon-close"
+            style="cursor: pointer;"
+            onclick="closeFn()"
+          ></p> -->
+        </div>
+        <div class="layui-row form-box">
+          <form class="layui-form" lay-filter="addForm" id="addForm">
+            <div class="layui-form-item form-tle">
+              溢油事故及模拟信息
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">溢油名称:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="nm"
+                  required
+                  lay-verify="nm"
+                  autocomplete="off"
+                  placeholder="请输入溢油名称"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">模拟名称:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="sm"
+                  required
+                  lay-verify="sm"
+                  autocomplete="off"
+                  placeholder="请输入模拟名称"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item form-tle">
+              事故及模拟时间
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">油品:</label>
+              <div class="layui-input-block lay_ipt lay_sele">
+                <select name="oils">
+                  <option value="石油">石油</option>
+                  <option value="成品油">成品油</option>
+                </select>
+              </div>
+            </div>
+
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">油密度:</label>
+              <div class="layui-input-block lay_ipt">
+                <input
+                  type="text"
+                  name="oildensity"
+                  value="900"
+                  required
+                  lay-verify="oildensity"
+                  autocomplete="off"
+                  placeholder="请输入油密度"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">溢油总量:</label>
+              <div class="layui-input-block lay_ipt">
+                <input
+                  type="text"
+                  name="oiltotal"
+                  value="1"
+                  required
+                  lay-verify="oiltotal"
+                  autocomplete="off"
+                  placeholder="请输入溢油总量"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">总量单位:</label>
+              <div class="layui-input-block lay_ipt lay_sele">
+                <select name="unittype">
+                  <option value="1">吨</option>
+                  <option value="2">m³</option>
+                  <option value="3">KG</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">开始时间:</label>
+              <div class="layui-input-block" id="dateBox" >
+                <input type="text" name="starttime" id="date" disabled class="layui-input lay_ipt">
+                <!-- <input
+                  type="text"
+                  name="starttime"
+                  id="date"
+                  required
+                  lay-verify="starttime"
+                  autocomplete="off"
+                  placeholder="请选择开始日期"
+                  class="layui-input lay_ipt"
+                /> -->
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">预报时效(H):</label>
+              <div class="layui-input-block lay_ipt lay_sele">
+                <select name="hourlength" disabled>
+                  <!-- <option value="12">12</option>
+                  <option value="24">24</option> -->
+                  <option value="48">48</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button
+                  type="submit"
+                  class="layui-btn subbtn"
+                  lay-submit
+                  lay-filter="submitbtn"
+                >
+                  提交
+                </button>
+
+                <button
+                  type="submit"
+                  class="layui-btn subbtn"
+                  id="back"
+                  lay-submit
+                  lay-filter="subback"
+                >
+                  溯源
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips">
+      技术中心漂移预测专家会商结果待反馈
+    </div>
+
+    <div id="feed">
+      专家会商结果已接收 <span class="layui-btn layui-btn-xs subbtn" onclick="lookFn()">点击查看</span>
+    </div>
+
+    <div class="feed">
+      <div class="feed-tle">
+        专家会商结果
+        <p class="rt layui-btn layui-btn-sm subbtn" onclick="hideFn()">
+          隐藏
+        </p>
+      </div>
+  
+      <div id="doc">
+        <div class="feed-doc">
+          <p class="lt">
+            会商文档(word)
+          </p>
+          <p class="rt">
+            <a href="" target="_blank" id="load">下载文档</a>
+          </p>
+        </div>
+  
+        <div class="feed-doc">
+          <p class="lt">
+            会商文档(表格)
+          </p>
+          <p class="rt">
+            <a href="" target="_blank" id="xls">下载表格</a>
+          </p>
+        </div>
+      </div>
+  
+      <div class="rota">
+        <div class="layui-carousel" id="rota">
+          <!-- <div carousel-item id="carousel">
+            <div><img src="" id="jpg" onclick="imgAlrFn()" /></div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script src="../../public/lib/echarts.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        warn: "js/warn",
+      })
+      .use("warn");
+  </script>
+</html>

@@ -1,0 +1,219 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+.lt {
+  float: left;
+}
+
+.rt {
+  float: right;
+}
+
+dl,
+li {
+  list-style: none;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.tdt-control {
+  display: none;
+}
+.tdt-pane {
+  z-index: 0 !important;
+}
+.subbtn {
+  background-color: #5a98de;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+}
+.switch {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  border: 2px solid #131a5f;
+  background-color: #08132c;
+  color: #fff;
+  z-index: 1;
+  /* position: relative; */
+}
+.preList {
+  height: 100%;
+  overflow-y: auto;
+}
+.list_tle {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  border-top: 2px solid #131a5f;
+  border-bottom: 2px solid #131a5f;
+  text-align: center;
+  font-size: 24px;
+}
+.list_tle #icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 30px;
+  cursor: pointer;
+}
+.preList > div {
+  /* display: flex; */
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #131a5f;
+  overflow: hidden;
+  cursor: pointer;
+}
+.addImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.preList > div p {
+  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.site{
+  width: 150px;
+}
+.type{
+  width: 200px;
+}
+/* .conf{
+  width: 90px;
+} */
+.btn{
+  width: 45px !important;
+}
+.preList > div:hover {
+  background-color: rgba(211, 117, 64, 0.3);
+}
+.add {
+  background-color: rgba(211, 117, 64, 0.7);
+}
+#icons {
+  position: fixed;
+  right: 10px;
+  top: 90px;
+  z-index: 1;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+
+.tips {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 0 10px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 3; 
+  width: 180px;
+  height: 200px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: #fff;
+}
+.item{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.item p{
+  float: left;
+}
+.lp{
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+.lpa{
+  background-color: #f29750;
+}
+.lpb{
+  background-color: #003a6c;
+}
+.lpc{
+  background-color: #b54334;
+}
+.lpd{
+  background-color: #8e7437;
+}
+
+
+
+/* 融合面提示框 */
+.alr_box{
+  width: 1000px;
+  height: 60px;
+  color: #fff;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  margin: auto;
+  display: none;
+}
+.alr_box p{
+  margin-right: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.alr_box #text{
+  height: 60px;
+  line-height: 60px;
+  font-size: 28px;
+  letter-spacing:5px;
+}
+.alr_box #text span{
+  text-indent: 10px;
+  font-size: 28px;
+  letter-spacing:5px;
+}
+#show{
+  width: 100px;
+  position: absolute;
+  bottom: 0;
+  right: 400px;
+  z-index: 5;
+  cursor: pointer;
+  display: none;
+}
+
+.tdt-label{
+  background-color: rgba(0,0,0,0.3) !important;
+  color: #fff !important;
+  box-shadow:0 !important;
+  -webkit-box-shadow:none !important;
+}

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/analy.css" />
+    <script
+      src="http://api.tianditu.gov.cn/api?v=4.0&tk=f7d44c4104b625f0159d98f50b636bb0"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <div class="layui-fluid addanal" id="addanal">
+      <div class="layui-row tle-box">
+        <p class="tle">
+          融合分析案例保存
+        </p>
+        <!-- <p
+          class="rt layui-icon layui-icon-close"
+          style="cursor: pointer;"
+          onclick="closeFn()"
+        ></p> -->
+      </div>
+
+      <form class="layui-form form-box">
+        <div class="layui-form-item">
+          <label class="layui-form-label label">案例名称:</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="name"
+              required
+              lay-verify="name"
+              autocomplete="off"
+              placeholder="请输入案例名称"
+              class="layui-input lay_ipt"
+            />
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label label">融合面积:</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="area"
+              id="area"
+              disabled
+              autocomplete="off"
+              placeholder="请输入融合面积"
+              class="layui-input lay_ipt"
+            />
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label label">溢油置信度:</label>
+          <div class="layui-input-block lay_ipt lay_sele">
+            <select name="kxd">
+              <option value="高">高</option>
+              <option value="较高">较高</option>
+              <option value="中">中</option>
+              <option value="低">低</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label label">融合方式:</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              id="anal"
+              disabled
+              autocomplete="off"
+              class="layui-input lay_ipt"
+            />
+          </div>
+        </div>
+        
+        <input type="hidden" id="file_a" name="file_a">
+        <input type="hidden" id="file_b" name="file_b">
+        <input type="hidden" id="file_c" name="file_c">
+        <input type="hidden" id="file_d" name="file_d">
+
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button
+              type="submit"
+              class="layui-btn subbtn"
+              lay-submit
+              lay-filter="addBtn"
+            >
+              保存
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="layui-fluid alrBox" id="alrBox">
+      <div class="layui-row tle-box">
+        <p class="tle">
+          融合分析参数
+        </p>
+        <!-- <p
+          class="rt layui-icon layui-icon-close"
+          style="cursor: pointer;"
+          onclick="closeFn()"
+        ></p> -->
+      </div>
+      <div class="layui-row form-box">
+        <form class="layui-form">
+          <div class="layui-form-item">
+            <label class="layui-form-label">融合方式:</label>
+            <div class="layui-input-block lay_ipt lay_sele">
+              <select lay-filter="type">
+                <option value="1">SAR、光学、高光谱</option>
+                <option value="2">X波段、光学</option>
+                <option value="3">光学、高光谱</option>
+              </select>
+            </div>
+          </div>
+        </form>
+
+        <form class="layui-form" id="addForm">
+          <!-- sar -->
+          <div class="analy_type analy_a">
+            <div class="layui-form-item">
+              <label class="layui-form-label label">SAR文件:</label>
+              <div class="layui-input-block">
+                <button
+                  type="button"
+                  id="sar"
+                  class="layui-btn layui-btn-primary"
+                >
+                  <i class="layui-icon"></i>只允许shp文件
+                </button>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label label">SAR文件名:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  id="sarn"
+                  required
+                  lay-verify="sarn"
+                  disabled
+                  autocomplete="off"
+                  placeholder="上传文件后自动显示文件名"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- X波段 -->
+          <div class="analy_type analy_b analy_xb">
+            <div class="layui-form-item">
+              <label class="layui-form-label label">X波段文件:</label>
+              <div class="layui-input-block">
+                <button
+                  type="button"
+                  id="xbd"
+                  class="layui-btn layui-btn-primary"
+                >
+                  <i class="layui-icon"></i>只允许shp文件
+                </button>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label label">X波段文件名:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  id="xbdn"
+                  required
+                  lay-verify="xbdn"
+                  disabled
+                  autocomplete="off"
+                  placeholder="上传文件后自动显示文件名"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- 卫星光学 -->
+          <div class="analy_type analy_a analy_b analy_c">
+            <div class="layui-form-item">
+              <label class="layui-form-label label">光学文件:</label>
+              <div class="layui-input-block">
+                <button
+                  type="button"
+                  id="wx"
+                  class="layui-btn layui-btn-primary"
+                >
+                  <i class="layui-icon"></i>只允许shp文件
+                </button>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label label">光学文件名:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  id="wxn"
+                  required
+                  lay-verify="wxn"
+                  disabled
+                  autocomplete="off"
+                  placeholder="上传文件后自动显示文件名"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- 高光谱 -->
+          <div class="analy_type analy_a analy_c">
+            <div class="layui-form-item">
+              <label class="layui-form-label label">高光谱文件:</label>
+              <div class="layui-input-block">
+                <button
+                  type="button"
+                  id="ggp"
+                  class="layui-btn layui-btn-primary"
+                >
+                  <i class="layui-icon"></i>只允许shp文件
+                </button>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label label">高光谱文件名:</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  id="ggpn"
+                  required
+                  lay-verify="ggpn"
+                  disabled
+                  autocomplete="off"
+                  placeholder="上传文件后自动显示文件名"
+                  class="layui-input lay_ipt"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <div class="layui-input-block">
+              <button
+                type="submit"
+                class="layui-btn subbtn"
+                lay-submit
+                lay-filter="analBtn"
+              >
+                开始分析
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="tips">
+      <div class="item"> 
+        <p class="lp lpa"></p>
+        <p class="rp">
+          SAR绘制面颜色
+        </p>
+      </div>
+
+      <div class="item"> 
+        <p class="lp lpb"></p>
+        <p class="rp">
+          X波段绘制面颜色
+        </p>
+      </div>
+
+      <div class="item"> 
+        <p class="lp lpc"></p>
+        <p class="rp">
+          光学绘制面颜色
+        </p>
+      </div>
+
+      <div class="item"> 
+        <p class="lp lpd"></p>
+        <p class="rp">
+          高光谱绘制面颜色
+        </p>
+      </div>
+    </div>
+
+
+    <div class="alr_box">
+      <p class="layui-icon layui-icon-close rt" id="hide"></p>
+      <div id="text"> 
+        <!-- 卫星光学和高光谱和sar:0.33平方公里 -->
+      </div>
+    </div>
+
+    <button class="layui-btn layui-btn-sm" id="btn">显示融合数据</button>
+
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        analy: "js/analy",
+      })
+      .use("analy");
+  </script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../public/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="../../css/case.css" />
+    <script
+      src="http://api.tianditu.gov.cn/api?v=4.0&tk=f7d44c4104b625f0159d98f50b636bb0"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+
+    <div class="axis" id="axis">
+      <div class="rt">
+        <i class="layui-icon layui-icon-pause" id="pause" onclick="pauseFn()"></i>
+        <i class="layui-icon layui-icon-play" id="play" onclick="playFn()"></i>
+      </div>
+      <div class="myChart" id="dateAxis"></div>
+    </div>
+
+    
+
+
+    <div class="switch" id="switch">
+      <div class="list_tle">
+        预测列表
+        <i class="layui-icon" id="icon">&#xe66b;</i>
+      </div>
+      <div class="preList" id="preList">
+        <!-- <div class="addImg"><img src="../../static/add.png" alt="" /></div> -->
+        <!-- <div class="add">
+          <p>1111</p>
+          <p>2010</p>
+        </div> -->
+      </div>
+    </div>
+    <i class="layui-icon" id="icons">&#xe668;</i>
+    <div class="main" id="map"></div>
+    
+    <!-- <div class="tips">
+      技术中心漂移预测专家会商结果待反馈
+    </div> -->
+
+
+
+
+  </body>
+  <script src="../../public/lib/layui/layui.js"></script>
+  <script src="../../public/lib/echarts.js"></script>
+  <script>
+    layui
+      .config({
+        base: "../../public/",
+      })
+      .extend({
+        urls: "lib/urls",
+        case: "js/case",
+      })
+      .use("case");
+  </script>
+</html>
